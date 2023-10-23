@@ -1,0 +1,64 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem; 
+}
+body{
+  background-color: rgb(255, 242, 226);
+}
+
+.add {
+  display: flex;
+
+}
+.input {
+  width: 415px;
+  height: 45px;
+  font-size: large;
+  border-radius: 5px;
+  border-color: rgb(116, 74, 7);
+  padding-left: 20px;
+}
+
+.agregar {
+  
+  background-color: rgb(156, 106, 60);
+  margin-left: 10px;
+  font-size:larger;
+  
+}
+
+.task {
+  width: 500px;
+  height: 60px;
+  font-size: large;
+  border-radius: 5px;
+  background-color: rgb(215, 198, 181);
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding-left: 15px;
+  
+}
+img {
+  width: 20px;
+  margin-right: 10px;
+  
+}
+
+.clear {
+  height: 100px;
+  display: flex;
+  align-items:end;
+  justify-content:flex-end;
+}
+
+.boton{
+  background-color: brown;
+  width: 200px;
+  height: 60px;
+  font-size: larger;
+}
+
+
