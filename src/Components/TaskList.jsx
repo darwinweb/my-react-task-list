@@ -1,17 +1,25 @@
-import Task from "./Task"
+import listaTareas from './ListaTareas';
 
-function TaskList(){
-    return(
-        <div >
-            <Task task="Levantarme a las 5:00 am" isComplete={false}/>
-            <Task task="Hacer el mercado del mes"/>                  
-            <Task task="Lavar la ropa y sacarla"/>
-            <Task task="Recoger a los niños del colegio"/>
-            <div className="clear">
-            <button className="boton" style={{color:"white"}}>Clear All</button>
-            </div>
-        </div>
-    )
+function TaskList() {
+  return (
+    <div >
+      {listaTareas.map((tarea) => (
+       <div className="task" key={tarea.titulo}>
+        <div className="task-item">
+            <input type="checkbox" className="seleccion" checked={tarea.isComplete} />          
+             <p>Tarea: {tarea.descripcion}</p>
+             <button>Edit</button>
+             <button>Delete</button>
+        </div >
+       </div>
+       ))}     
+      <div className="clear">
+        <button className="boton" style={{ color: "white" }}>
+          Clear All
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default TaskList
+export default TaskList;
