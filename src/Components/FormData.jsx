@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { FaPlus } from "react-icons/fa";
 
 function FormData ({addTask}){
     
@@ -23,8 +24,13 @@ function FormData ({addTask}){
         className="input"
         value={newTask}
         onChange={(e)=> setNewTask(e.target.value)}
+        onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              agregarTarea();
+            }
+          }}
         /> 
-        <button onClick={agregarTarea} className="agregar" style={{color:"white"}}>+</button>
+        <button onClick={agregarTarea} className="agregar" style={{color:"white"}}><FaPlus/></button>
         </div>
     )
 }

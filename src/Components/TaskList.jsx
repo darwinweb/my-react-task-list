@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
 
 function TaskList({tasks, setTasks}) {
 
@@ -15,9 +17,9 @@ function TaskList({tasks, setTasks}) {
   const updateLocalStorage = (updatedTasks) => {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
-  
-  const editarTarea = (tarea, newDescripcion) => {
-    tarea.descripcion = newDescripcion;
+
+  const editarTarea = (tarea, newDescription) => {
+    tarea.description = newDescription;
     setEditTask(null);
     updateLocalStorage(tasks);
   };
@@ -42,7 +44,7 @@ function TaskList({tasks, setTasks}) {
               <input
               className='input-update'
               type="text"
-              defaultValue={tarea.descripcion}
+              defaultValue={tarea.description}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   editarTarea(tarea, e.target.value);
@@ -51,16 +53,17 @@ function TaskList({tasks, setTasks}) {
             />
           ) : (
             <div className="task-content">
-              <p>Tarea: {tarea.description}</p>
-              <button onClick={() => setEditTask(tarea)}>Edit</button>
-              <button onClick={() =>  eliminarTarea(tarea)}>Delete</button>
+
+              <p><strong>Tarea: </strong>{tarea.description}</p>
+              <button className='boton-edit' onClick={() => setEditTask(tarea)}><FaEdit className='edit-icon'/></button>
+              <button onClick={() =>  eliminarTarea(tarea)}><FaTrash className='delete-icon'/></button>
             </div>
           )}
         </div>
       </div>
     ))}     
-      <div className="clear">
-        <button className="boton" style={{ color: "white" }} onClick={eliminarTodasLasTareas}>
+      <div className="contenedor-clear">
+        <button className="boton-clear" style={{ color: "white" }} onClick={eliminarTodasLasTareas}>
           Clear All
         </button>
       </div>
