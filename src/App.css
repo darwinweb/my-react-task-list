@@ -19,9 +19,7 @@ img{
   margin-left: 20px;
 }
 
-.add {
-  display: flex;
-}
+
 
 .input {
   width: 415px;
@@ -30,12 +28,15 @@ img{
   border-radius: 5px;
   border-color: rgb(185, 119, 13);
   padding-left: 20px;
+  
 }
 
 .agregar { 
   background-color: rgb(194, 129, 68);
   margin-left: 10px;
-  font-size:larger;  
+  font-size:larger; 
+  padding-top: 9px;
+  padding-bottom: 10px;
 }
 
 .task {   

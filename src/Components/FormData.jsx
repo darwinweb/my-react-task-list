@@ -15,11 +15,12 @@ function FormData ({addTask}){
             setNewTask('')       
         }};
 
-    return(
-        <div className="add">
+    return(    
+        <form>
+            <h3>Agrega una tarea.</h3>       
             <input 
                 type="text" 
-                placeholder="Add your new todo" 
+                placeholder="Ej: Entregar el proyecto..." 
                 className="input"
                 value={newTask}
                 onChange={(e)=> setNewTask(e.target.value)}
@@ -29,8 +30,8 @@ function FormData ({addTask}){
                     }
                 }}
             /> 
-            <button onClick={agregarTarea} className="agregar" style={{color:"white"}}><FaPlus/></button>
-        </div>
+             <button name="agregar"onClick={agregarTarea} className="agregar" style={{color:"white"}}><FaPlus/></button>           
+        </form>
     )};
 
 export default FormData
