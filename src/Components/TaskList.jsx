@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaCheckSquare } from 'react-icons/fa';
 
 
 function TaskList({tasks, setTasks}) {
-
   const [editTask, setEditTask] = useState()
-
   
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -30,6 +28,15 @@ function TaskList({tasks, setTasks}) {
     updateLocalStorage(updatedTasks);
   };
 
+  const completarTarea = (tarea) => {
+    tarea.isComplete = !tarea.isComplete;
+    const updatedTasks = tasks.map((task) =>
+      task.id === tarea.id ? tarea : task
+    );
+    setTasks(updatedTasks); 
+    updateLocalStorage(updatedTasks); 
+  };
+
   const eliminarTodasLasTareas = () => {
     setTasks([]); 
     localStorage.removeItem('tasks'); 
@@ -38,7 +45,7 @@ function TaskList({tasks, setTasks}) {
   return (
     <div >
       {tasks.map((tarea) => (
-       <div className="task" key={tarea.id}>
+       <div className='task' key={tarea.id}>
         <div >
         {editTask === tarea ? (
               <input
@@ -53,8 +60,11 @@ function TaskList({tasks, setTasks}) {
             />
           ) : (
             <div className="task-content">
-
-              <p><strong>Tarea: </strong>{tarea.description}</p>
+              <button onClick={() => completarTarea(tarea)}><FaCheckSquare className='complete-icon'/></button>
+              <p>
+                <strong>Tarea: </strong>
+                {tarea.isComplete ? <del>{tarea.description}</del> : tarea.description}
+              </p>
               <button className='boton-edit' onClick={() => setEditTask(tarea)}><FaEdit className='edit-icon'/></button>
               <button onClick={() =>  eliminarTarea(tarea)}><FaTrash className='delete-icon'/></button>
             </div>
