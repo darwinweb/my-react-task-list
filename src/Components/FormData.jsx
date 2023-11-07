@@ -17,7 +17,7 @@ function FormData ({addTask}){
 
     return(    
         <form>
-            <h3>Agrega una tarea.</h3>       
+            <h3>Agrega una tarea</h3>       
             <input 
                 type="text" 
                 placeholder="Ej: Entregar el proyecto..." 
