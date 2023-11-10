@@ -1,46 +1,18 @@
-import { useState, useEffect } from 'react';
 import { FaEdit, FaTrash, FaCheckSquare } from 'react-icons/fa';
+import useTaskManager from './UseTaskManager';
 
 
-function TaskList({tasks, setTasks}) {
-  const [editTask, setEditTask] = useState()
-  
-  useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (storedTasks) {
-      setTasks(storedTasks);
-    }
-  }, []);
-  
-  const updateLocalStorage = (updatedTasks) => {
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-  };
-
-  const editarTarea = (tarea, newDescription) => {
-    tarea.description = newDescription;
-    setEditTask(null);
-    updateLocalStorage(tasks);
-  };
-
-  const eliminarTarea = (tarea) => {
-    const updatedTasks = tasks.filter((task) => task.id !== tarea.id);  
-    setTasks(updatedTasks);
-    updateLocalStorage(updatedTasks);
-  };
-
-  const completarTarea = (tarea) => {
-    tarea.isComplete = !tarea.isComplete;
-    const updatedTasks = tasks.map((task) =>
-      task.id === tarea.id ? tarea : task
-    );
-    setTasks(updatedTasks); 
-    updateLocalStorage(updatedTasks); 
-  };
-
-  const eliminarTodasLasTareas = () => {
-    setTasks([]); 
-    localStorage.removeItem('tasks'); 
-  };
+function TaskList() {
+  const {
+    tasks,
+    borrarTarea,
+    eliminarTodasLasTareas,
+    editarTarea,
+    completarTarea,
+    editTask,
+    setEditTask
+  } = useTaskManager();
+ 
 
   return (
     <div >
@@ -60,20 +32,33 @@ function TaskList({tasks, setTasks}) {
             />
           ) : (
             <div className="task-content">
-              <button onClick={() => completarTarea(tarea)}><FaCheckSquare className='complete-icon'/></button>
+              <button 
+              onClick={() => completarTarea(tarea)}>
+                <FaCheckSquare className='complete-icon'/>
+                </button>
               <p>
                 <strong>Tarea: </strong>
                 {tarea.isComplete ? <del>{tarea.description}</del> : tarea.description}
               </p>
-              <button className='boton-edit' onClick={() => setEditTask(tarea)}><FaEdit className='edit-icon'/></button>
-              <button onClick={() =>  eliminarTarea(tarea)}><FaTrash className='delete-icon'/></button>
+              <button 
+              className='boton-edit' 
+              onClick={() => setEditTask(tarea)}>
+                <FaEdit className='edit-icon'/>
+                </button>
+              <button 
+              onClick={() =>  borrarTarea(tarea)}>
+                <FaTrash className='delete-icon'/>
+                </button>
             </div>
           )}
         </div>
       </div>
     ))}     
       <div className="contenedor-clear">
-        <button className="boton-clear" style={{ color: "white" }} onClick={eliminarTodasLasTareas}>
+        <button 
+        className="boton-clear" 
+        style={{ color: "white" }} 
+        onClick={eliminarTodasLasTareas}>
           Clear All
         </button>
       </div>
@@ -82,3 +67,5 @@ function TaskList({tasks, setTasks}) {
 }
 
 export default TaskList;
+
+

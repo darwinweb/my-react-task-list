@@ -1,19 +1,14 @@
-import { useState } from "react"
 import { FaPlus } from "react-icons/fa";
+import useTaskManager from './UseTaskManager';
 
-function FormData ({addTask}){
-    
-    const [newTask, setNewTask] = useState('');
-   
-    const agregarTarea = () => {
-        if(newTask.trim() !== ''){
-            addTask({
-                id: Date.now(),
-                description: newTask,
-                isComplete: false
-            });          
-            setNewTask('')       
-        }};
+function FormData (){
+
+    const {
+        crearTarea,  
+        newTask,
+        setNewTask,
+      } = useTaskManager();
+
 
     return(    
         <form>
@@ -26,11 +21,11 @@ function FormData ({addTask}){
                 onChange={(e)=> setNewTask(e.target.value)}
                 onKeyPress={(e) => {
                     if (e.key === 'Enter') {
-                    agregarTarea();
+                    crearTarea();
                     }
                 }}
             /> 
-             <button name="agregar"onClick={agregarTarea} className="agregar" style={{color:"white"}}><FaPlus/></button>           
+             <button name="agregar"onClick={crearTarea} className="agregar" style={{color:"white"}}><FaPlus/></button>           
         </form>
     )};
 
