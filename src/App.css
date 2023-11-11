@@ -16,10 +16,8 @@ body{
 
 img{
   width: 5em;
-  margin-left: 20px;
+  margin-left: 30px;
 }
-
-
 
 .input {
   width: 415px;
@@ -32,11 +30,27 @@ img{
 }
 
 .agregar { 
-  background-color: rgb(194, 129, 68);
+  background-color: rgb(175, 113, 54);
   margin-left: 10px;
   font-size:larger; 
   padding-top: 9px;
   padding-bottom: 10px;
+}
+
+.agregar:hover {
+  background-color: rgb(228, 149, 74); 
+}
+
+.completar:hover{
+  background-color: rgb(185, 255, 246);
+}
+
+.editar:hover{
+  background-color: rgb(255, 232, 215);
+}
+
+.borrar:hover{
+  background-color: rgb(255, 216, 227);
 }
 
 .task {   
@@ -77,8 +91,6 @@ p {
   color: green;
 }
 
-
-
 .contenedor-clear {  
   height: 100px;
   display: flex;
@@ -93,6 +105,9 @@ p {
   height: 60px;
   font-size: larger;
   margin-top: 10px;
+}
+.boton-clear:hover {
+  background-color: rgb(229, 67, 35); 
 }
 
 

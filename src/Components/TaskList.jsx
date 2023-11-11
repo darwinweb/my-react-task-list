@@ -1,8 +1,10 @@
 import { FaEdit, FaTrash, FaCheckSquare } from 'react-icons/fa';
-import useTaskManager from './UseTaskManager';
+import { useContext } from 'react';
+import Context from '../contexts/context';
 
 
 function TaskList() {
+
   const {
     tasks,
     borrarTarea,
@@ -11,7 +13,7 @@ function TaskList() {
     completarTarea,
     editTask,
     setEditTask
-  } = useTaskManager();
+  } = useContext(Context);
  
 
   return (
@@ -32,35 +34,44 @@ function TaskList() {
             />
           ) : (
             <div className="task-content">
+
               <button 
-              onClick={() => completarTarea(tarea)}>
+                className='completar'
+                onClick={() => completarTarea(tarea)}>
                 <FaCheckSquare className='complete-icon'/>
                 </button>
+
               <p>
                 <strong>Tarea: </strong>
                 {tarea.isComplete ? <del>{tarea.description}</del> : tarea.description}
               </p>
+
               <button 
-              className='boton-edit' 
-              onClick={() => setEditTask(tarea)}>
+                className='editar' 
+                onClick={() => setEditTask(tarea)}>
                 <FaEdit className='edit-icon'/>
-                </button>
+              </button>
+
               <button 
-              onClick={() =>  borrarTarea(tarea)}>
+              className='borrar'
+                onClick={() =>  borrarTarea(tarea)}>
                 <FaTrash className='delete-icon'/>
                 </button>
+
             </div>
           )}
         </div>
       </div>
     ))}     
       <div className="contenedor-clear">
+
         <button 
         className="boton-clear" 
         style={{ color: "white" }} 
         onClick={eliminarTodasLasTareas}>
           Clear All
         </button>
+        
       </div>
     </div>
   );

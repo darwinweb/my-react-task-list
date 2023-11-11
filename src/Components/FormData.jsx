@@ -1,17 +1,23 @@
 import { FaPlus } from "react-icons/fa";
-import useTaskManager from './UseTaskManager';
+import { useState, useContext } from "react";
+import Context from "../contexts/context";
 
 function FormData (){
 
     const {
-        crearTarea,  
-        newTask,
-        setNewTask,
-      } = useTaskManager();
+        crearTarea      
+      } = useContext(Context);
 
+      const [ newTask, setNewTask] = useState('')
+
+      const createTask = (e) => {
+        e.preventDefault()
+        crearTarea(newTask)
+        setNewTask('')
+      } 
 
     return(    
-        <form>
+        <form onSubmit={(e) => createTask(e)}>
             <h3>Agrega una tarea</h3>       
             <input 
                 type="text" 
@@ -21,11 +27,11 @@ function FormData (){
                 onChange={(e)=> setNewTask(e.target.value)}
                 onKeyPress={(e) => {
                     if (e.key === 'Enter') {
-                    crearTarea();
+                    
                     }
                 }}
             /> 
-             <button name="agregar"onClick={crearTarea} className="agregar" style={{color:"white"}}><FaPlus/></button>           
+             <button name="agregar" type="submit" className="agregar" style={{color:"white"}}><FaPlus/></button>           
         </form>
     )};
 

@@ -6,6 +6,7 @@ const useTaskManager = () => {
     const [newTask, setNewTask] = useState('');
     const [editTask, setEditTask] = useState()
     
+    console.log(tasks)
 
     useEffect(() => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -14,19 +15,26 @@ const useTaskManager = () => {
         }
       }, []);
     
-      const updateLocalStorage = (updatedTasks) => {
-        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-      };
 
-      const crearTarea = () => {
+    const updateLocalStorage = (updatedTasks) => {
+      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    };
+
+      const crearTarea = (newTask) => {
         if(newTask.trim() !== ''){
-            addTask({
+            const task = {
                 id: Date.now(),
                 description: newTask,
                 isComplete: false
-            });          
-            setNewTask('')       
-        }};
+            };  
+            setTasks(prevTasks => {
+              const updatedTasks = [...prevTasks, task];
+              updateLocalStorage(updatedTasks);
+              return updatedTasks;
+            });
+            setNewTask('');
+          }
+        };        
 
       const borrarTarea = (tarea) => {
         const updatedTasks = tasks.filter((task) => task.id !== tarea.id);  
