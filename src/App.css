@@ -8,6 +8,10 @@ body{
   background-size: cover;
 }
 
+.container-app{
+  width: 600px;
+}
+
 .header{
   display: flex;
   align-items: center;
@@ -19,8 +23,20 @@ img{
   margin-left: 30px;
 }
 
-.input {
-  width: 415px;
+.subtitulo {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  grid-column: 1 / -1; 
+}
+
+.container-form{
+ display: grid;
+ grid-template-columns: 1fr auto;
+ 
+}
+
+.input-tittle {
+  max-width: 100%;
   height: 45px;
   font-size: large;
   border-radius: 5px;
@@ -29,11 +45,24 @@ img{
   
 }
 
+.text-area{
+  max-width: 100%;
+  height: 45%;
+  font-size: 100%;
+  border-radius: 5px;
+  border-color: rgb(118, 89, 43);
+  padding-left: 20px;
+  margin-top: 3%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px;
+}
+
 .agregar { 
+  width: 90%;
+  height: 95%;
   background-color: rgb(175, 113, 54);
   margin-left: 10px;
   font-size:larger; 
-  padding-top: 9px;
   padding-bottom: 10px;
 }
 
@@ -42,22 +71,24 @@ img{
 }
 
 .completar:hover{
-  background-color: rgb(185, 255, 246);
+  background-color: rgb(162, 239, 126);
 }
 
 .editar:hover{
-  background-color: rgb(255, 232, 215);
+  background-color: rgb(234, 196, 169);
 }
 
 .borrar:hover{
-  background-color: rgb(255, 216, 227);
+  background-color: rgb(216, 118, 118);
 }
 
 .task {   
+    width: 97%;
+    min-height: 90px;
     margin-top: 20px;
     background-color: rgb(243, 221, 177); 
-    border-radius: 15px;
-    padding: 15px;  
+    border-radius: 10px;
+    padding: 10px;  
 }
 
 p {
@@ -77,6 +108,7 @@ p {
 }
 
 .task-content{
+  max-width: 100%;
   display: grid;
   grid-template-columns:  auto 1fr auto auto;
   height: 65px;

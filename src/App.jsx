@@ -9,13 +9,13 @@ function App() {
   
 
   return (
-    <>
+    <div className='container-app'>
     <ContextProvider>
     <Header/>
     <FormData  />
     <TaskList />
     </ContextProvider>
-    </>
+    </div>
   )
 }
 

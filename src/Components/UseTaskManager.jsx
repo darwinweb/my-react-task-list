@@ -20,11 +20,12 @@ const useTaskManager = () => {
       localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
 
-      const crearTarea = (newTask) => {
+      const crearTarea = (newTask, description) => {
         if(newTask.trim() !== ''){
             const task = {
                 id: Date.now(),
-                description: newTask,
+                tittle: newTask,
+                description: description,
                 isComplete: false
             };  
             setTasks(prevTasks => {
@@ -47,8 +48,8 @@ const useTaskManager = () => {
         localStorage.removeItem('tasks'); 
       };
 
-      const editarTarea = (tarea, newDescription) => {
-        tarea.description = newDescription;
+      const editarTarea = (tarea, newTittle) => {
+        tarea.tittle = newTittle;
         setEditTask(null);
         updateLocalStorage(tasks);
       };

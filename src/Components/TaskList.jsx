@@ -25,7 +25,7 @@ function TaskList() {
               <input
               className='input-update'
               type="text"
-              defaultValue={tarea.description}
+              defaultValue={tarea.tittle}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   editarTarea(tarea, e.target.value);
@@ -43,7 +43,9 @@ function TaskList() {
 
               <p>
                 <strong>Tarea: </strong>
-                {tarea.isComplete ? <del>{tarea.description}</del> : tarea.description}
+                {tarea.isComplete ? <del>{tarea.tittle}</del> : tarea.tittle}
+                <br/>
+                <strong>Descripción: </strong>{tarea.description}
               </p>
 
               <button 
