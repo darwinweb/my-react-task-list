@@ -5,8 +5,6 @@ const useTaskManager = () => {
     const [ tasks, setTasks ] = useState([])
     const [newTask, setNewTask] = useState('');
     const [editTask, setEditTask] = useState()
-    
-    console.log(tasks)
 
     useEffect(() => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -15,7 +13,6 @@ const useTaskManager = () => {
         }
       }, []);
     
-
     const updateLocalStorage = (updatedTasks) => {
       localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };
