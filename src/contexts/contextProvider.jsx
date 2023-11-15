@@ -14,7 +14,7 @@ export default function ContextProvider({children}) {
         setEditTask
       } = useTaskManager();
      
-      
+
 
   return (
     <Context.Provider value={{

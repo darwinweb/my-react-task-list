@@ -45,7 +45,8 @@ function TaskList() {
                 <strong>Tarea: </strong>
                 {tarea.isComplete ? <del>{tarea.tittle}</del> : tarea.tittle}
                 <br/>
-                <strong>Descripción: </strong>{tarea.description}
+                
+                {tarea.description ? tarea.description : null}
               </p>
 
               <button 
@@ -71,7 +72,7 @@ function TaskList() {
         className="boton-clear" 
         style={{ color: "white" }} 
         onClick={eliminarTodasLasTareas}>
-          Clear All
+          Limpiar
         </button>
         
       </div>
