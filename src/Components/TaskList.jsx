@@ -41,10 +41,10 @@ function TaskList() {
                 onClick={() => completarTarea(tarea)}/>                   
 
               <p>
-                <strong>Tarea: </strong>
+                <strong className='tarea'>Tarea: </strong>
                 {tarea.isComplete ? <del>{tarea.tittle}</del> : tarea.tittle}
                 <br/>
-                {tarea.isComplete ? <del>{tarea.description}</del> : tarea.description } 
+                {tarea.isComplete ? <del className='descripcion'>{tarea.description}</del> : <p className='descripcion'>{tarea.description}</p>  } 
               </p>
 
               <button 

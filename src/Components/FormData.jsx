@@ -30,18 +30,20 @@ function FormData () {
                 onKeyPress={(e) => {
                     e.key = 'Enter'
                 }}/> 
-            {errors.newTask?.type === 'required' && <p className="validacion">El campo no puede estar vacio</p>}
-            {errors.newTask?.type === 'minLength' && <p className="validacion">El nombre debe contener al menos 3 caracteres</p>}
+            {errors.newTask?.type === 'required' && <p className="validacion">* El campo no puede estar vacio</p>}
+            {errors.newTask?.type === 'minLength' && <p className="validacion">* El nombre debe contener al menos 3 caracteres</p>}
             
             <label className="label-descripcion">Descripcion (opcional)</label>
             <textarea
                 {...register('description', {
-                  maxLength: 100,
+                  maxLength: 50,
                 })}
-                placeholder=" Máximo 100 caracteres. . . "
+                placeholder=" Máximo 50 caracteres. . . "
                 className="text-area"
 
             />
+             {errors.description?.type === 'maxLength' && <p className="validacion">* Ha superado el maximo de caracteres</p>}
+
             <div className="contenedor-agregar">
                 <button name="agregar" type="submit" className="agregar" style={{color:"white"}}>Agregar</button>
             </div>
