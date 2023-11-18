@@ -1,56 +1,55 @@
-import { FaPlus } from "react-icons/fa";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Context from "../contexts/context";
+import { useForm } from "react-hook-form";
 
-function FormData (){
+function FormData () {
+  
+  const { register, handleSubmit, formState: { errors }, reset,  } = useForm();
 
-    const {
-        crearTarea      
-      } = useContext(Context);
+    const onSubmit = (data) => {
+       crearTarea(data.newTask, data.description);
+       reset();
+    }
 
-    const [ newTask, setNewTask] = useState('')
-    const [description, setDescription] = useState('');
-    
-
-    const createTask = (e) => {
-        e.preventDefault();
-    
-        if (newTask.trim().length < 3 || newTask.trim().length > 20) {
-          alert("El título debe tener al menos 3 caracteres y no mas de 20");
-          return;
-        }
-        if (description && description.length > 100) {
-          alert("La descripción no debe superar los 100 caracteres.");
-          return;
-        }
-        crearTarea(newTask, description);
-        setNewTask("");
-        setDescription("");
-      };
+    const { crearTarea } = useContext(Context);
 
     return(    
         <form 
         className="container-form"
-        onSubmit={(e) => createTask(e)}>
-            <h3 className="subtitulo">Agrega una tarea</h3>       
+        onSubmit={handleSubmit(onSubmit)}>
+            <label className="subtitulo">Ingresa una Tarea</label>       
             <input 
+                {...register('newTask', {
+                  required: true,
+                  maxLength: 30,
+                  minLength: 3
+                })}
                 type="text" 
                 placeholder="Ej: Entregar el proyecto..." 
                 className="input-tittle"
-                value={newTask}
-                onChange={(e)=> setNewTask(e.target.value)}
                 onKeyPress={(e) => {
                     e.key = 'Enter'
-                }}
-            /> 
-                <button name="agregar" type="submit" className="agregar" style={{color:"white"}}><FaPlus/></button>           
+                }}/> 
+            {errors.newTask?.type === 'required' && <p className="validacion">El campo no puede estar vacio</p>}
+            {errors.newTask?.type === 'minLength' && <p className="validacion">El nombre debe contener al menos 3 caracteres</p>}
+            
+            <label className="label-descripcion">Descripcion (opcional)</label>
             <textarea
-                placeholder="Descripción (opcional, máximo 100 caracteres)"
+                {...register('description', {
+                  maxLength: 100,
+                })}
+                placeholder=" Máximo 100 caracteres. . . "
                 className="text-area"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            />
-        </form>
-    )};
 
+            />
+            <div className="contenedor-agregar">
+                <button name="agregar" type="submit" className="agregar" style={{color:"white"}}>Agregar</button>
+            </div>
+
+            
+        </form>
+
+        
+    )};
+    
 export default FormData

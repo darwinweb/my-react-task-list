@@ -15,7 +15,7 @@ function TaskList() {
     setEditTask
   } = useContext(Context);
  
-
+  console.log(tasks)
   return (
     <div >
       {tasks.map((tarea) => (
@@ -35,18 +35,16 @@ function TaskList() {
           ) : (
             <div className="task-content">
 
-              <button 
+              <input 
+                type='checkbox'
                 className='completar'
-                onClick={() => completarTarea(tarea)}>
-                <FaCheckSquare className='complete-icon'/>
-                </button>
+                onClick={() => completarTarea(tarea)}/>                   
 
               <p>
                 <strong>Tarea: </strong>
                 {tarea.isComplete ? <del>{tarea.tittle}</del> : tarea.tittle}
                 <br/>
-                
-                {tarea.description ? tarea.description : null}
+                {tarea.isComplete ? <del>{tarea.description}</del> : tarea.description } 
               </p>
 
               <button 
