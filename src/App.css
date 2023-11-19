@@ -4,12 +4,41 @@
   padding: 2rem; 
 }
 body{
-  background-image: url(https://img.freepik.com/fotos-premium/fondo-o-textura-marmol-crema_75922-381.jpg?w=740);
-  background-size: cover;
+  background-color: rgb(246, 227, 204);
+  height: 50em;
 }
 
 .container-app{
   width: 600px;
+  height: 700px;
+}
+
+.lista {
+  display: flex; 
+  list-style: none; 
+ justify-content: space-around;
+ font-size: larger;
+
+}
+
+.lista li{
+  margin-right: 30px;
+}
+
+.home{
+  background-color: rgb(205, 175, 143);
+  height: 550px;
+  text-align: justify;
+  padding: 40px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  margin-top: 10%;
+  
+}.texto-bienvenida{
+  margin-right: 15px;
+  padding: 10px;
+  color: rgb(255, 255, 255);
 }
 
 .header{
@@ -83,8 +112,6 @@ img{
   margin: 10px; 
   padding: 5px;
   font-size: larger;
-  
-  
 }
 
 .completar {
