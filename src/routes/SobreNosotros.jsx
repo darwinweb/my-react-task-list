@@ -2,7 +2,7 @@ import React from 'react'
 
 const SobreNosotros = () => {
   return (
-    <div >
+    <div className='container-about'>
         <header>
             <h1>Todo App</h1>
             <p>Una aplicación para gestionar tus tareas y listas de quehaceres.</p>

@@ -1,6 +1,6 @@
 #root {
   max-width: 1280px;
-  height: 1280px;
+  height: 1100px;
   margin: 0 auto;
   padding: 2rem; 
 }
@@ -10,20 +10,7 @@ body{
 }
 
 .container-app{
-  width: 600px;
-  
-}
-
-.lista {
-  display: flex; 
-  list-style: none; 
- justify-content: space-around;
- font-size: larger;
-
-}
-
-.lista li{
-  margin-right: 30px;
+  width: 800px;
 }
 
 .home{
@@ -40,6 +27,7 @@ body{
   margin-right: 15px;
   padding: 10px;
   color: rgb(255, 255, 255);
+  font-size: 20px;
 }
 
 .header{
@@ -59,10 +47,21 @@ img{
   grid-column: 1 / -1; 
 }
 
+.containter-tareas{
+  margin-top: 50px;
+  
+}
+
 .container-form{
  display: grid;
  grid-template-columns: 1fr ;
  
+}
+
+.container-about{
+  background-color: antiquewhite;
+  padding: 10px;
+
 }
 
 .input-tittle {
