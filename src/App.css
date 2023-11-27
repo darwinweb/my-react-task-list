@@ -4,26 +4,13 @@
   margin: 0 auto;
   padding: 2rem; 
 }
-body{
-  background-color: rgb(246, 227, 204);
-  
-}
 
 .container-app{
   width: 800px;
 }
 
-.home{
-  background-color: rgb(205, 175, 143);
-  height: 550px;
-  text-align: justify;
-  padding: 40px;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  margin-top: 10%;
   
-}.texto-bienvenida{
+.texto-bienvenida{
   margin-right: 15px;
   padding: 10px;
   color: rgb(255, 255, 255);
@@ -58,11 +45,6 @@ img{
  
 }
 
-.container-about{
-  background-color: antiquewhite;
-  padding: 10px;
-
-}
 
 .input-tittle {
   max-width: 100%;
@@ -120,24 +102,11 @@ img{
   
 }
 
-.agregar:hover {
-  background-color: rgb(228, 149, 74); 
-}
-
-
-.editar:hover{
-  background-color: rgb(234, 196, 169);
-}
-
-.borrar:hover{
-  background-color: rgb(216, 118, 118);
-}
-
 .task {   
     width: 97%;
     min-height: 90px;
     margin-top: 20px;
-    background-color: rgb(243, 221, 177); 
+    background-color: rgb(177, 209, 243); 
     border-radius: 10px;
     padding: 10px;  
 }
@@ -147,9 +116,6 @@ p {
   font-size: large;
 }
 
-.tarea-titulo{
-  margin: 0px;
-}
 
 .descripcion{
   margin: 0;
@@ -158,9 +124,6 @@ p {
 }
 
 .input-update{
-  background-color: rgb(241, 208, 165);
-  width: 300px;
-  border-color: antiquewhite;
   border-radius: 5px;
   font-size: large;
 }
@@ -195,15 +158,7 @@ p {
   margin-top: 10px;
 }
 
-.boton-clear{
-  background-color: brown;
-  width: 140px;
-  height: 60px;
-  font-size: larger;
-  margin-top: 10px;
-}
-.boton-clear:hover {
-  background-color: rgb(229, 67, 35); 
-}
+
+
 
 

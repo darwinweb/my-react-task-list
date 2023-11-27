@@ -1,6 +1,7 @@
-import { FaEdit, FaTrash, FaCheckSquare } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useContext } from 'react';
 import Context from '../contexts/context';
+import { Button, Checkbox } from '@chakra-ui/react';
 
 
 function TaskList() {
@@ -15,7 +16,6 @@ function TaskList() {
     setEditTask
   } = useContext(Context);
  
-  console.log(tasks)
   return (
     <div >
       {tasks.map((tarea) => (
@@ -35,10 +35,12 @@ function TaskList() {
           ) : (
             <div className="task-content">
 
-              <input 
-                type='checkbox'
-                className='completar'
-                onClick={() => completarTarea(tarea)}/>                   
+              <Checkbox 
+              onClick={() => completarTarea(tarea)}
+              size='lg'
+              colorScheme='green'
+              p='10px'
+              />            
 
               <p>
                 <strong className='tarea'>Tarea: </strong>
@@ -47,17 +49,18 @@ function TaskList() {
                 {tarea.isComplete ? <del className='descripcion'>{tarea.description}</del> : <p className='descripcion'>{tarea.description}</p>  } 
               </p>
 
-              <button 
-                className='editar' 
+              <Button 
+                w='50px' 
                 onClick={() => setEditTask(tarea)}>
                 <FaEdit className='edit-icon'/>
-              </button>
+              </Button>
 
-              <button 
-              className='borrar'
+              <Button 
+                w='50px'
+                ml='15px'
                 onClick={() =>  borrarTarea(tarea)}>
                 <FaTrash className='delete-icon'/>
-                </button>
+                </Button>
 
             </div>
           )}
@@ -66,12 +69,15 @@ function TaskList() {
     ))}     
       <div className="contenedor-clear">
 
-        <button 
-        className="boton-clear" 
+        <Button 
+         m='20px' p='30px' 
+         bg='red.500' 
+         name='limpiar'
+         fontSize='20px'
         style={{ color: "white" }} 
         onClick={eliminarTodasLasTareas}>
           Limpiar
-        </button>
+        </Button>
         
       </div>
     </div>
