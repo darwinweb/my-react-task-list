@@ -1,15 +1,16 @@
 import './App.css'
 import Home from './routes/Home';
 import ContextProvider from './contexts/contextProvider'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,  } from "react-router-dom";
 import SobreNosotros from './routes/SobreNosotros';
 import  Tareas  from './routes/Tareas';
 import Menu from './Components/Menu';
+import { Box } from '@chakra-ui/react';
 
 function App() {
 
   return (
-    <div className='container-app'>
+    <Box w='900px' >
     <BrowserRouter>
       <ContextProvider>
         <Menu/>
@@ -20,7 +21,7 @@ function App() {
         </Routes>
       </ContextProvider>
     </BrowserRouter>
-    </div>
+    </Box>
   )
 }
 

@@ -52,6 +52,7 @@ const useTaskManager = () => {
       };
 
       const completarTarea = (tarea) => {
+        console.log('Haciendo clic en el checkbox');
         tarea.isComplete = !tarea.isComplete;
         const updatedTasks = tasks.map((task) =>
           task.id === tarea.id ? tarea : task

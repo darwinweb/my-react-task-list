@@ -8,12 +8,13 @@ const Home = () => {
   return (
 
     <Center as='section' bg='gray.100'h='100vh' >
-      <Box maxW='420px' bg='white' p='8' h='95vh' >
+      <Box w='500px' bg='white' p='8' h='95vh' >
         <Image
           src='https://avatars.githubusercontent.com/u/61118853?s=200&v=4'
           alt='Logo Ada school'
           objectFit='cover'
           mx='auto'
+          w='100px'
         />
         <Center>
           <Heading my='6'>Todo App</Heading>

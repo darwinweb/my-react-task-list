@@ -1,7 +1,7 @@
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useContext } from 'react';
 import Context from '../contexts/context';
-import { Button, Checkbox } from '@chakra-ui/react';
+import { Button, Checkbox, Text, Box, Center, Input, Grid, GridItem } from '@chakra-ui/react';
 
 
 function TaskList() {
@@ -17,13 +17,14 @@ function TaskList() {
   } = useContext(Context);
  
   return (
-    <div >
+    <Center>
+      <Box w='700px'>
       {tasks.map((tarea) => (
-       <div className='task' key={tarea.id}>
-        <div >
+       <Box bg='blue.100' mt='20px' p='10px' borderRadius='10px' pr='20px'
+       key={tarea.id}>
+        < Box >
         {editTask === tarea ? (
-              <input
-              className='input-update'
+              <Input
               type="text"
               defaultValue={tarea.tittle}
               onKeyPress={(e) => {
@@ -32,55 +33,73 @@ function TaskList() {
                 }
               }}
             />
+            
           ) : (
-            <div className="task-content">
-
-              <Checkbox 
-              onClick={() => completarTarea(tarea)}
-              size='lg'
-              colorScheme='green'
-              p='10px'
-              />            
-
-              <p>
-                <strong className='tarea'>Tarea: </strong>
-                {tarea.isComplete ? <del>{tarea.tittle}</del> : tarea.tittle}
-                <br/>
-                {tarea.isComplete ? <del className='descripcion'>{tarea.description}</del> : <p className='descripcion'>{tarea.description}</p>  } 
-              </p>
-
-              <Button 
-                w='50px' 
-                onClick={() => setEditTask(tarea)}>
-                <FaEdit className='edit-icon'/>
-              </Button>
-
-              <Button 
-                w='50px'
-                ml='15px'
-                onClick={() =>  borrarTarea(tarea)}>
-                <FaTrash className='delete-icon'/>
+            <Box >
+              <Grid
+                templateColumns='auto 1fr 45px 9%'
+                alignItems="center"
+                fontSize="15px"
+                h='65px'
+              >
+              <GridItem>
+                <Checkbox
+                isChecked={tarea.isComplete}
+                onChange={() => {completarTarea(tarea)}}
+                size='lg'
+                colorScheme='green'
+                p='10px'
+                border='green'
+                /> 
+              </GridItem>
+              <GridItem>
+                <Text ml='15px'fontSize='20px' >
+                  <strong className='tarea'>Tarea: </strong>
+                  {tarea.isComplete? <Text as='del' >{tarea.tittle}</Text>: tarea.tittle}
+                  <br/>
+                  {tarea.isComplete ? <Text as='del' m='0'color='gray' fontSize='md' >{tarea.description}</Text> : <Text m='0'color='gray' fontSize='md'>{tarea.description}</Text>  } 
+                </Text>
+              </GridItem>
+              <GridItem>
+                <Button 
+                  w='50px' 
+                  onClick={() => setEditTask(tarea)}>
+                  <FaEdit color='gray'/>
                 </Button>
-
-            </div>
+              </GridItem>
+              <GridItem>
+                <Button 
+                  w='50px'
+                  ml='15px'
+                  onClick={() =>  borrarTarea(tarea)}>
+                  <FaTrash color='red' />
+                  </Button>
+              </GridItem>
+              </Grid>
+            </Box>
           )}
-        </div>
-      </div>
+        </Box>
+      </Box>
     ))}     
-      <div className="contenedor-clear">
+      < Box display="flex" 
+            justifyContent="center" 
+            alignItems="center"
+        >
 
         <Button 
          m='20px' p='30px' 
          bg='red.500' 
          name='limpiar'
          fontSize='20px'
-        style={{ color: "white" }} 
+        colorScheme='white'
         onClick={eliminarTodasLasTareas}>
           Limpiar
         </Button>
         
-      </div>
-    </div>
+      </Box>
+    </Box>
+    </Center>
+    
   );
 }
 

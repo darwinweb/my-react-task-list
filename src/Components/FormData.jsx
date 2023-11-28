@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Context from "../contexts/context";
 import { useForm } from "react-hook-form";
-import { Input, FormLabel, Button, FormControl, Box } from "@chakra-ui/react";
+import { Input, FormLabel, Button, FormControl, Box, Text, Center } from "@chakra-ui/react";
 
 function FormData () {
   
@@ -14,10 +14,11 @@ function FormData () {
 
     const { crearTarea } = useContext(Context);
 
-    return(    
-        <Box>
+    return(  
+        <Center>
+            <Box mt='50px'> 
             <form 
-        className="container-form"
+        
         onSubmit={handleSubmit(onSubmit)}>
 
             <FormControl isRequired >
@@ -30,42 +31,50 @@ function FormData () {
                     })}
                     type="text" 
                     placeholder="Ej: Entregar el proyecto..." 
+                    w='700px'
                     htmlSize={4}
                     onKeyPress={(e) => {
                         e.key = 'Enter'
                     }}/> 
-                {errors.newTask?.type === 'required' && <p className="validacion">* El campo no puede estar vacio</p>}
-                {errors.newTask?.type === 'minLength' && <p className="validacion">* El nombre debe contener al menos 3 caracteres</p>}
+                {errors.newTask?.type === 'required' && <Text color='red' m='0' fontSize='sm'>* El campo no puede estar vacio</Text>}
+                {errors.newTask?.type === 'minLength' && <Text color='red' m='0' fontSize='sm'>* El nombre debe contener al menos 3 caracteres</Text>}
             </FormControl>
             
             <FormControl>
-            <FormLabel className="label-descripcion">Descripcion (opcional)</FormLabel>
+            <FormLabel mt='10px'>Descripcion </FormLabel>
             <Input
                 {...register('description', {
                   maxLength: 50,
                 })}
                 placeholder=" Máximo 50 caracteres. . . "
+                w='700px'
 
             />
-             {errors.description?.type === 'maxLength' && <p className="validacion">* Ha superado el maximo de caracteres</p>}
+             {errors.description?.type === 'maxLength' && <Text color='red' m='0' fontSize='sm'>* Ha superado el maximo de caracteres</Text>}
             </FormControl>
 
-            <div className="contenedor-agregar">
+            <Box display="flex" 
+                justifyContent="center" 
+                alignItems="center"
+            >
                 <Button 
                     name="agregar" 
                     type="submit" 
                     m='20px' p='30px' 
-                    bg='blue.300' 
-                    style={{color:"white"}}
+                    bg='blue.400' 
+                    colorScheme="white"
                     fontSize='20px'
+                    
                 >
                     Agregar
                 </Button>
-            </div>
+            </Box>
 
             
         </form>
         </Box>
+        </Center>  
+        
         
     )};
     
