@@ -63,7 +63,7 @@ const SobreNosotros = () => {
           <ListItem>JavaScript</ListItem>
           <ListItem>React</ListItem>
           <ListItem>HTML</ListItem>
-          <ListItem>CSS</ListItem>
+          <ListItem>Chakra UI</ListItem>
         </UnorderedList>
       </section>
       </Box>
