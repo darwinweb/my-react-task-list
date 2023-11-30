@@ -1,17 +1,21 @@
 import React from 'react'
-import { Box, Heading, Text, UnorderedList, ListItem } from "@chakra-ui/react";
+import { Box, Heading, Text, UnorderedList, ListItem, useColorMode } from "@chakra-ui/react";
 
 const SobreNosotros = () => {
+
+  const { colorMode } = useColorMode();
+  const isDarkMode = colorMode === 'dark';
+
   return (
     <Box textAlign='justify'   >
-      <Box mb='5' bg='white'p='20px' >
+      <Box mb='5' bg={isDarkMode? 'blue.800': 'blue.100'}p='20px' >
       <header>
         <Heading fontSize="4xl" mb='3' >Todo App</Heading>
         <Text>Una aplicación para gestionar tus tareas y listas de quehaceres.</Text>
       </header>
       </Box>
 
-      <Box mb='5'p='20px' bg='blue.100'>
+      <Box mb='5'p='20px' bg={isDarkMode? 'gray.700': 'white'}>
       <section>
         <Heading fontSize="2xl" mb='2'  >Producto y Propósito:</Heading>
         <Text mb='2'>
@@ -26,7 +30,7 @@ const SobreNosotros = () => {
       </section>
       </Box>
 
-      <Box mb='5' bg='white' p='20px' >
+      <Box mb='5'  bg={isDarkMode? 'blue.800': 'blue.100'} p='20px' >
       <section>
         <Heading fontSize="2xl">Funcionalidades Clave:</Heading>
         <UnorderedList>
@@ -39,7 +43,7 @@ const SobreNosotros = () => {
       </section>
       </Box>
 
-      <Box mb='5' p='20px' bg='blue.100'>
+      <Box mb='5' p='20px'  bg={isDarkMode? 'gray.700': 'white'}>
       <section>
         <Heading fontSize="2xl">¿Por qué los usuarios usarían esta aplicación?</Heading>
         <UnorderedList>
@@ -52,7 +56,7 @@ const SobreNosotros = () => {
       </section>
       </Box>
 
-      <Box mb='' bg='white' p='20px' >
+      <Box mb='' bg={isDarkMode? 'blue.800': 'blue.100'} p='20px' >
         <section>
         <Heading fontSize="2xl">Tecnologías Utilizadas</Heading>
         <UnorderedList>

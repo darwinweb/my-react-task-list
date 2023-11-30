@@ -1,10 +1,13 @@
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useContext } from 'react';
 import Context from '../contexts/context';
-import { Button, Checkbox, Text, Box, Center, Input, Grid, GridItem } from '@chakra-ui/react';
+import { Button, Checkbox, Text, Box, Center, Input, Grid, GridItem, useColorMode } from '@chakra-ui/react';
 
 
 function TaskList() {
+
+  const { colorMode } = useColorMode()
+  const isDarkMode = colorMode === 'dark';
 
   const {
     tasks,
@@ -20,7 +23,7 @@ function TaskList() {
     <Center>
       <Box w='700px'>
       {tasks.map((tarea) => (
-       <Box bg='blue.100' mt='20px' p='10px' borderRadius='10px' pr='20px'
+       <Box bg={isDarkMode? 'blue.800': 'blue.100'} mt='20px' p='10px' borderRadius='10px' pr='20px'
        key={tarea.id}>
         < Box >
         {editTask === tarea ? (
@@ -54,7 +57,7 @@ function TaskList() {
               </GridItem>
               <GridItem>
                 <Text ml='15px'fontSize='20px' >
-                  <strong className='tarea'>Tarea: </strong>
+                  <strong >Tarea: </strong>
                   {tarea.isComplete? <Text as='del' >{tarea.tittle}</Text>: tarea.tittle}
                   <br/>
                   {tarea.isComplete ? <Text as='del' m='0'color='gray' fontSize='md' >{tarea.description}</Text> : <Text m='0'color='gray' fontSize='md'>{tarea.description}</Text>  } 
@@ -91,7 +94,7 @@ function TaskList() {
          bg='red.500' 
          name='limpiar'
          fontSize='20px'
-        colorScheme='white'
+        color='white'
         onClick={eliminarTodasLasTareas}>
           Limpiar
         </Button>

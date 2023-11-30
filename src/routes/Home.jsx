@@ -1,14 +1,16 @@
 import React from 'react'
-import { Box, Image, Heading, Text, Center } from '@chakra-ui/react'
+import { Box, Image, Heading, Text, Center, useColorMode } from '@chakra-ui/react'
 
 const Home = () => {
+  const { colorMode } = useColorMode();
+  const isDarkMode = colorMode === 'dark';
 
   const appName = "Todo App"
 
   return (
 
-    <Center as='section' bg='gray.100'h='100vh' >
-      <Box w='500px' bg='white' p='8' h='95vh' >
+    <Center as='section' bg={isDarkMode ? 'gray.700' : 'blue.100'} h='100vh' mt='20px'  >
+      <Box w='500px' bg={isDarkMode ? 'gray.600' : 'white'} p='8' h='80vh'  >
         <Image
           src='https://avatars.githubusercontent.com/u/61118853?s=200&v=4'
           alt='Logo Ada school'
@@ -19,7 +21,7 @@ const Home = () => {
         <Center>
           <Heading my='6'>Todo App</Heading>
         </Center>
-        <Text textAlign='justify'pr='20px' >
+        <Text textAlign='justify'fontSize='lg'  >
            ¡Bienvenido a {appName}, tu compañero de tareas diarias! Estamos emocionados de tenerte aquí 
             para ayudarte a organizar y simplificar tu vida cotidiana. Con {appName}, 
             puedes crear listas de tareas, asignar prioridades, establecer fechas límite 

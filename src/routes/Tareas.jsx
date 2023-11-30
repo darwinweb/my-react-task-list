@@ -5,7 +5,7 @@ import TaskList from '../Components/TaskList'
 
  const Tareas = () => {
   return (
-    <div className='containter-tareas'>
+    <div >
       <FormData/>
       <TaskList/>
     </div>

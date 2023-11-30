@@ -61,8 +61,8 @@ function FormData () {
                     name="agregar" 
                     type="submit" 
                     m='20px' p='30px' 
-                    bg='blue.400' 
-                    colorScheme="white"
+                    bg='blue.500' 
+                    color="white"
                     fontSize='20px'
                     
                 >

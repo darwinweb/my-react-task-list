@@ -1,11 +1,15 @@
 import './App.css'
-import Home from './routes/Home';
 import ContextProvider from './contexts/contextProvider'
 import { BrowserRouter, Routes, Route,  } from "react-router-dom";
-import SobreNosotros from './routes/SobreNosotros';
-import  Tareas  from './routes/Tareas';
-import Menu from './Components/Menu';
 import { Box } from '@chakra-ui/react';
+import { lazy, Suspense } from 'react';
+import Menu from './Components/Menu';
+import Loading from './Components/Loading';
+import ButtonTheme from './Components/ButtonTheme';
+
+const Home = lazy(() => import('./routes/Home'))
+const SobreNosotros = lazy(() => import('./routes/SobreNosotros'))
+const Tareas = lazy(() => import('./routes/Tareas'))
 
 function App() {
 
@@ -13,11 +17,24 @@ function App() {
     <Box w='900px' >
     <BrowserRouter>
       <ContextProvider>
-        <Menu/>
+        < ButtonTheme />
+        < Menu />
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/sobre-nosotros' element={<SobreNosotros/>}/>
-          <Route path='/Tareas' element={<Tareas/>}/>
+          <Route path='/' element={
+            <Suspense fallback={< Loading />} >
+               < Home />
+            </Suspense>
+          }/>
+          <Route path='/sobre-nosotros' element={
+            <Suspense fallback={< Loading />} >
+             < SobreNosotros />
+           </Suspense>
+          }/>
+          <Route path='/Tareas' element={
+          <Suspense fallback={< Loading />} >
+            <Tareas/>
+          </Suspense>
+          }/>
         </Routes>
       </ContextProvider>
     </BrowserRouter>
